@@ -20,8 +20,9 @@ export const Products: CollectionConfig = {
       if (operation !== 'create') return doc
       const existing = await req.payload.find({ collection: 'stock', where: { product: { equals: doc.id } }, limit: 1, overrideAccess: true })
       if (existing.docs.length) return doc
+      const sizes = ['S', 'M', 'L', 'XL', 'XXL'] as const
       const values = new Map((doc.sizes || []).map((row: { size: string; count: number }) => [row.size, row.count]))
-      for (const size of ['S','M','L','XL','XXL']) await req.payload.create({ collection: 'stock', overrideAccess: true, data: { product: doc.id, size, count: Number(values.get(size) || 0) } })
+      for (const size of sizes) await req.payload.create({ collection: 'stock', overrideAccess: true, data: { product: doc.id, size, count: Number(values.get(size) || 0) } })
       return doc
     }],
   },

@@ -12,7 +12,7 @@ export const Stock: CollectionConfig = {
         await req.payload.create({ collection: 'stock-movements', overrideAccess: true, data: { product: productId, size: doc.size, delta: Number(doc.count) - Number(previousDoc.count), note: 'Counter adjustment' } })
       }
       const rows = await req.payload.find({ collection: 'stock', where: { product: { equals: productId } }, limit: 20, overrideAccess: true })
-      const sizes = ['S','M','L','XL','XXL'].map((size) => ({ size, count: Number(rows.docs.find((r) => r.size === size)?.count || 0) }))
+      const sizes = (['S', 'M', 'L', 'XL', 'XXL'] as const).map((size) => ({ size, count: Number(rows.docs.find((r) => r.size === size)?.count || 0) }))
       await req.payload.update({ collection: 'products', id: productId, data: { sizes, archived: sizes.every((s) => s.count === 0) }, overrideAccess: true })
       return doc
     }],
