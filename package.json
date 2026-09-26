@@ -1,0 +1,37 @@
+{
+  "name": "shati-kenya",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "payload generate:importmap && next dev",
+    "build": "payload generate:importmap && next build",
+    "start": "next start",
+    "payload": "payload",
+    "generate:types": "payload generate:types",
+    "db:migrate": "payload migrate",
+    "db:migrate:create": "payload migrate:create",
+    "db:seed": "tsx scripts/seed.ts",
+    "admin:create": "tsx scripts/create-admin.ts"
+  },
+  "dependencies": {
+    "@payloadcms/db-postgres": "^3.85.0",
+    "@payloadcms/next": "^3.85.0",
+    "@payloadcms/richtext-lexical": "^3.85.0",
+    "@payloadcms/storage-vercel-blob": "^3.85.0",
+    "@payloadcms/ui": "^3.85.0",
+    "next": "^16.2.6",
+    "payload": "^3.85.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "sharp": "^0.34.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "dotenv": "^17.2.3",
+    "typescript": "^5.9.3",
+    "tsx": "^4.20.6"
+  }
+}

@@ -1,0 +1,2 @@
+import type { CollectionConfig } from 'payload'
+export const Counties: CollectionConfig = { slug: 'counties', admin: { useAsTitle: 'name', defaultColumns: ['name', 'deliveryBand'] }, access: { read: () => true, create: ({ req }) => Boolean(req.user), update: ({ req }) => Boolean(req.user), delete: ({ req }) => Boolean(req.user) }, fields: [{ name: 'name', type: 'text', required: true, unique: true }, { name: 'code', type: 'text', required: true, unique: true }, { name: 'deliveryBand', type: 'select', options: ['metro', 'near', 'far'] }] }

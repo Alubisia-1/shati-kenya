@@ -1,0 +1,2 @@
+import type { CollectionConfig } from 'payload'
+export const DeliveryRates: CollectionConfig = { slug: 'delivery-rates', admin: { useAsTitle: 'band' }, access: { read: () => true, create: ({ req }) => Boolean(req.user), update: ({ req }) => Boolean(req.user), delete: ({ req }) => Boolean(req.user) }, fields: [{ name: 'band', type: 'select', required: true, unique: true, options: ['metro', 'near', 'far'] }, { name: 'feeKES', type: 'number', required: true, min: 0 }, { name: 'minDays', type: 'number', required: true }, { name: 'maxDays', type: 'number', required: true }] }

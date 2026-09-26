@@ -1,0 +1,3 @@
+import { NextResponse } from 'next/server'
+import { getCMS } from '@/src/lib/payload'
+export async function POST(request:Request){try{const data=await request.json();const page=String(data.page||'').slice(0,40);const piece=String(data.piece||'').slice(0,120);if(!['product','bag','home','shop','watch','league'].includes(page))return NextResponse.json({error:'Invalid event'}, {status:400});const cms=await getCMS();await cms.create({collection:'order-events',data:{page,piece},overrideAccess:true});return NextResponse.json({ok:true},{status:201})}catch{return NextResponse.json({error:'Event could not be recorded'},{status:503})}}

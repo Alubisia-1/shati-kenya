@@ -1,0 +1,5 @@
+import Link from 'next/link'
+import { BagCount } from './client/BagCount'
+import { HeaderOrder } from './client/HeaderOrder'
+export function SiteHeader({phone='254729286626',greeting='Hi SHATI, I have a question.',issueNumber='00',ticker='NAIROBI CBD · DELIVERY TO ALL 47 COUNTIES · NEW ISSUE'}:{phone?:string;greeting?:string;issueNumber?:string;ticker?:string}) { const clean=phone.replace(/\D/g,''); return <><div className="ticker">{ticker}<span>✳</span> ISSUE {issueNumber}</div><header className="header" id="top"><Link className="brand" href="/" aria-label="SHATI home"><img src="/assets/shati-wordmark-day.svg" alt="SHATI"/></Link><span className="issue">Independent by design. <i>Issue {issueNumber}</i></span><SectionNavigation desktop/><div className="head-actions"><Link href="/bag" className="bag-link" aria-label="Shopping bag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8zm4 0V6a3 3 0 0 1 6 0v2"/></svg><BagCount/></Link><HeaderOrder phone={clean} greeting={greeting}/></div></header><SectionNavigation/></> }
+import { SectionNavigation } from './client/SectionNavigation'

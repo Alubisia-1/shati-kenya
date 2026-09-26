@@ -1,0 +1,2 @@
+import type { GlobalConfig } from 'payload'
+export const Settings: GlobalConfig = { slug: 'settings', access: { read: () => true, update: ({ req }) => Boolean(req.user) }, fields: [{ name: 'shopPhone', type: 'text', defaultValue: '+254 729 286626', required: true }, { name: 'whatsappGreeting', type: 'text', defaultValue: 'Hi SHATI, I have a question.' }, { name: 'openingHours', type: 'text' }, { name: 'storeAddress', type: 'text' }, { name: 'memberPricePercent', type: 'number', min: 0, max: 100 }, { name: 'tickerText', type: 'text' }] }

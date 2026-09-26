@@ -1,0 +1,2 @@
+import type { CollectionConfig } from 'payload'
+export const FPLCache:CollectionConfig={slug:'fpl-cache',admin:{useAsTitle:'url',defaultColumns:['url','fetchedAt']},access:{read:({req})=>Boolean(req.user),create:({req})=>Boolean(req.user),update:({req})=>Boolean(req.user),delete:({req})=>Boolean(req.user)},fields:[{name:'url',type:'text',required:true,unique:true,index:true},{name:'response',type:'json',required:true},{name:'fetchedAt',type:'date',required:true,index:true}]}

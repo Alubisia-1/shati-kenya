@@ -1,0 +1,2 @@
+import type { CollectionConfig } from 'payload'
+export const OrderEvents: CollectionConfig = { slug: 'order-events', admin: { useAsTitle: 'page', defaultColumns: ['page', 'piece', 'createdAt'] }, access: { read: ({ req }) => Boolean(req.user), create: () => false, update: () => false, delete: ({ req }) => Boolean(req.user) }, fields: [{ name: 'page', type: 'text', required: true }, { name: 'piece', type: 'text' }, { name: 'county', type: 'text' }] }
